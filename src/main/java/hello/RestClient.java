@@ -27,13 +27,18 @@ public class RestClient{
 	  
    HttpHeaders headers = new HttpHeaders();
    headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-   String url = "http://services.groupkt.com/country/get/iso2code/IN"+strIso;
+   String url = "http://services.groupkt.com/country/get/iso2code/"+strIso;
    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);   
 
   HttpEntity<?> entity = new HttpEntity<>(headers);
-
-  HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
-  String countryName = response.getBody().getRestResponse().getResult().getName();
+	  String countryName="Error in calling rest call";
+try{	
+        HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
+       countryName = response.getBody().getRestResponse().getResult().getName();
+       } catch(Exception ex){
+         
+       }
+  
   return  countryName;
   }
 }
