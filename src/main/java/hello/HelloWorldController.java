@@ -5,16 +5,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 @RequestMapping("/webhook")
 public class HelloWorldController {
 
+   @Autowired
+   private RestClient restClient;
+    
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody WebhookResponse webhook(@RequestBody String obj){
 
         System.out.println(obj);
-
-        return new WebhookResponse("Hello! Hirak...." + obj, "Text " + obj);
+        String strISO = restClient.callISOApi(IN);
+        return new WebhookResponse("Hello! Hirak...." + strISO, "Text " + strISO);
     }
 }
