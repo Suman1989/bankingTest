@@ -18,7 +18,7 @@ public class HelloWorldController {
     public @ResponseBody WebhookResponse webhook(@RequestBody String obj){
 
         System.out.println(obj);
-        String strISO = restClient.callISOApi(IN);
+        String strISO = restClient.callISOApi("IN");
         return new WebhookResponse("Hello! Hirak...." + strISO, "Text " + strISO);
     }
 }
