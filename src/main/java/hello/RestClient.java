@@ -33,7 +33,7 @@ public class RestClient{
   HttpEntity<?> entity = new HttpEntity<>(headers);
 
   HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
-  String countryName = response.getRestResponse().getResult().getName();
+  String countryName = response..getBody().getRestResponse().getResult().getName();
   return  countryName;
   }
 }
