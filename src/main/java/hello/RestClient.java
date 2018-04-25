@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
@@ -19,17 +20,17 @@ public class RestClient{
   @Autowired
   private RestTemplate restTemplate;
   
-  public ISOCodeResponse callISOApi(String strIso){
+  public String callISOApi(String strIso){
 	  
    HttpHeaders headers = new HttpHeaders();
    headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-
+   Strin url = "http://services.groupkt.com/country/get/iso2code/IN"+strIso;
    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);   
 
   HttpEntity<?> entity = new HttpEntity<>(headers);
 
   HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
-  response.get
-    
+  String countryName = response.getRestResponse().getResult().getName();
+  return  countryName;
   }
 }
