@@ -27,7 +27,7 @@ public class RestClient{
 	  
    HttpHeaders headers = new HttpHeaders();
    headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-   Strin url = "http://services.groupkt.com/country/get/iso2code/IN"+strIso;
+   String url = "http://services.groupkt.com/country/get/iso2code/IN"+strIso;
    UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);   
 
   HttpEntity<?> entity = new HttpEntity<>(headers);
