@@ -29,6 +29,7 @@ public class RestClient{
   HttpEntity<?> entity = new HttpEntity<>(headers);
 
   HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
+  response.get
     
   }
 }
