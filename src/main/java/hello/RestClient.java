@@ -10,15 +10,26 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
+import org.springframework.web.util.UriComponentsBuilder;
 
 
 @Service
 public class RestClient{
 
   @Autowired
-	private RestTemplate restTemplate;
+  private RestTemplate restTemplate;
   
-  public void callApi(){
+  public void callISOApi(String strIso){
+	  
+   HttpHeaders headers = new HttpHeaders();
+   headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+
+     UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+       
+
+HttpEntity<?> entity = new HttpEntity<>(headers);
+
+HttpEntity<String> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, String.class);
     
   }
 }
