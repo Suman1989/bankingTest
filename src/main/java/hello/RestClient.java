@@ -31,7 +31,7 @@ public class RestClient{
 		try{	
 			HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
 			System.out.println("Response body is like:::"+response.getBody());
-			countryName = response.getBody().getRestResponse().getResult().getName();
+			countryName = response.getBody().getRestResponse().getResultRest().getName();
 		} catch(Exception ex){
 			ex.printStackTrace();
 			System.out.println(ex);
