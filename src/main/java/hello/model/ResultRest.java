@@ -1,7 +1,6 @@
 package hello.model;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,36 +11,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-"messages",
-"result"
+"name",
+"alpha2_code",
+"alpha3_code"
 })
-public class RestResponse {
+public class ResultRest {
 
-@JsonProperty("messages")
-private List<String> messages = null;
-@JsonProperty("result")
-private ResultRest result;
+@JsonProperty("name")
+private String name;
+@JsonProperty("alpha2_code")
+private String alpha2Code;
+@JsonProperty("alpha3_code")
+private String alpha3Code;
 @JsonIgnore
 private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-@JsonProperty("messages")
-public List<String> getMessages() {
-return messages;
+@JsonProperty("name")
+public String getName() {
+return name;
 }
 
-@JsonProperty("messages")
-public void setMessages(List<String> messages) {
-this.messages = messages;
+@JsonProperty("name")
+public void setName(String name) {
+this.name = name;
 }
 
-@JsonProperty("result")
-public ResultRest getResult() {
-return result;
+@JsonProperty("alpha2_code")
+public String getAlpha2Code() {
+return alpha2Code;
 }
 
-@JsonProperty("result")
-public void setResult(ResultRest result) {
-this.result = result;
+@JsonProperty("alpha2_code")
+public void setAlpha2Code(String alpha2Code) {
+this.alpha2Code = alpha2Code;
+}
+
+@JsonProperty("alpha3_code")
+public String getAlpha3Code() {
+return alpha3Code;
+}
+
+@JsonProperty("alpha3_code")
+public void setAlpha3Code(String alpha3Code) {
+this.alpha3Code = alpha3Code;
 }
 
 @JsonAnyGetter
