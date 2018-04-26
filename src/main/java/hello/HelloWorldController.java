@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import hello.RestClient;
 import hello.request.WebhookRequest;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/webhook")
@@ -26,6 +27,12 @@ public class HelloWorldController {
 		//String strISO=webhookJsonConverter.convert(jsonInString);
 		//strISO = restClient.callISOApi(strISO);
 		//System.out.println("************ISO Code is "+strISO);
+		String iSo ="";
+		try{
+			iSo = request.getResult().getResolvedQuery();
+		}catch(Exception e){
+		iSo ="Error";	
+		}
 		return new WebhookResponse("Hello! Hirak...." + request.getResult().getResolvedQuery(), "Text " + request.getResult().getResolvedQuery());
 	}	
 	
