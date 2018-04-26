@@ -12,16 +12,16 @@ import hello.RestClient;
 @RequestMapping("/webhook")
 public class HelloWorldController {
 
-   //@Autowired
-   //private RestClient restClient;
-    
-    @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody WebhookResponse webhook(@RequestBody String obj){
+	@Autowired
+	private RestClient restClient;
 
-        System.out.println(obj);
-       String strISO="Dummy...";
-        //String strISO = restClient.callISOApi("IN");
-        System.out.println("************ISO Code is "+strISO);
-        return new WebhookResponse("Hello! Hirak...." + strISO, "Text " + strISO);
-    }
+	@RequestMapping(method = {RequestMethod.POST})
+	public @ResponseBody WebhookResponse webhookPost(@RequestBody String obj){
+
+		System.out.println(obj);
+		String strISO="Dummy..."+obj;
+		strISO = restClient.callISOApi("IN");
+		System.out.println("************ISO Code is "+strISO);
+		return new WebhookResponse("Hello! Hirak...." + strISO, "Text " + strISO);
+	}
 }
