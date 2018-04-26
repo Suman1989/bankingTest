@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import hello.RestClient;
-import hello.model;
+import hello.model.*;
 
 @Controller
 @RequestMapping("/webhook")
