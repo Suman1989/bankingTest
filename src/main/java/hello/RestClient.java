@@ -5,40 +5,38 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import hello.model.ISOCodeResponse;
-import hello.model.RestResponse;
-import hello.model.Result;
 
 
 @Service
 public class RestClient{
 
-  @Autowired
-  private RestTemplate restTemplate;
-  
-  public String callISOApi(String strIso){
-	  
-   HttpHeaders headers = new HttpHeaders();
-   headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
-   String url = "http://services.groupkt.com/country/get/iso2code/"+strIso;
-   UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);   
+	@Autowired
+	private RestTemplate restTemplate;
 
-  HttpEntity<?> entity = new HttpEntity<>(headers);
-	  String countryName="Error in calling rest call";
-try{	
-        HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
-       countryName = response.getBody().getRestResponse().getResult().getName();
-       } catch(Exception ex){
-         
-       }
-  
-  return  countryName;
-  }
+	public String callISOApi(String strIso){
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+		String url = "http://services.groupkt.com/country/get/iso2code/"+strIso;
+		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);   
+
+		HttpEntity<?> entity = new HttpEntity<>(headers);
+		String countryName="Error in calling rest call";
+		
+		System.out.println("URL:::"+builder.toUriString());
+		try{	
+			HttpEntity<ISOCodeResponse> response = restTemplate.exchange(builder.toUriString(), HttpMethod.GET, entity, ISOCodeResponse.class);
+			System.out.println("Response body is like:::"+response.getBody());
+			countryName = response.getBody().getRestResponse().getResult().getName();
+		} catch(Exception ex){
+			ex.printStackTrace();
+			System.out.println(ex);
+		}
+
+		return  countryName;
+	}
 }
