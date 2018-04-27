@@ -37,7 +37,7 @@ public class HelloWorldController {
 		String iSo ="";
 		try{
 			iSo = request.getResult().getResolvedQuery();
-			JSONObject jsonCaseDetails = apiClient.getCaseDetails("GS50268");
+			JSONObject jsonCaseDetails = apiClient.getCaseDetails("NTBL-180425-U30160");
 		}catch(Exception e){
 		iSo ="Error";	
 		}
