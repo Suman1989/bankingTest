@@ -36,12 +36,13 @@ public class HelloWorldController {
 		//System.out.println("************ISO Code is "+strISO);
 		String iSo ="";
 		try{
-			iSo = request.getResult().getResolvedQuery();
+			//iSo = request.getResult().getResolvedQuery();
 			JSONObject jsonCaseDetails = apiClient.getCaseDetails("sr05453");
+			iSo = buildSpeech(jsonCaseDetails);
 		}catch(Exception e){
 		iSo ="Error";	
 		}
-		return new WebhookResponse("Hello! ...." + request.getResult().getResolvedQuery(), "Text " + request.getResult().getResolvedQuery());
+		return new WebhookResponse("Hello! ...." + iSo, "Text " + iSo);
 	}
 	
 	private String buildSpeech(JSONObject jsonCaseDetails){
