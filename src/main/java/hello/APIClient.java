@@ -1,4 +1,4 @@
-package com.amazonaws.poc.client;
+package hello;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.amazonaws.poc.model.api.TaskResponse;
+
 
 @Service
 public class APIClient {
@@ -24,27 +24,7 @@ public class APIClient {
 	 * @return
 	 */
 	
-	public TaskResponse getTasksONB(){
-		
-		String url= "https://sit.apib2b.citi.com/gcgapi/dev3/api/v1/ccb/onboarding/case/{crmCaseId}/tasks";
-		
-		HttpHeaders httpHeaders = new HttpHeaders();
-		ResponseEntity<TaskResponse> response = null;
-		
-		httpHeaders.add("Authorization", "Bearer " + getAccessToken());
-		httpHeaders.add("Content-Type", "application/json");
-		httpHeaders.add("Accept", "application/json");
-		httpHeaders.add("APIm-Debug", "true");
-		httpHeaders.add("client_id", "bf5c92b6-6041-4d13-9177-83634d991457");
-		httpHeaders.add("channelID", "SF");
-		httpHeaders.add("countryCode", "US");
-		httpHeaders.add("businessCode", "CCB");
-		HttpEntity<?> httpEntity = new HttpEntity<>(httpHeaders);
-		
-		response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, TaskResponse.class,"CCBOBC20180300001715");	
-		
-		return response.getBody();
-	}
+	
 	
 	/**
 	 * 
