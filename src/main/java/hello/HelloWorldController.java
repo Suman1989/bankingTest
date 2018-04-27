@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import hello.RestClient;
 import hello.request.WebhookRequest;
 import org.springframework.web.bind.annotation.RequestBody;
+import hello.RestClient;
+import hello.APIClient;
 
 @Controller
 @RequestMapping("/webhook")
@@ -16,6 +18,9 @@ public class HelloWorldController {
 
 	@Autowired
 	private RestClient restClient;
+	
+	@Autowired
+	private APIClient apiClient;
 	
 	@Autowired
 	private WebhookJsonConverter webhookJsonConverter;
