@@ -37,11 +37,11 @@ public class HelloWorldController {
 		String iSo ="";
 		try{
 			iSo = request.getResult().getResolvedQuery();
-			//JSONObject jsonCaseDetails = apiClient.getCaseDetails(userSoeId);
+			JSONObject jsonCaseDetails = apiClient.getCaseDetails(userSoeId);
 		}catch(Exception e){
 		iSo ="Error";	
 		}
-		return new WebhookResponse("Hello! Hirak...." + request.getResult().getResolvedQuery(), "Text " + request.getResult().getResolvedQuery());
+		return new WebhookResponse("Hello! ...." + request.getResult().getResolvedQuery(), "Text " + request.getResult().getResolvedQuery());
 	}
 	
 	private String buildSpeech(JSONObject jsonCaseDetails){
