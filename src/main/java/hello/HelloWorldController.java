@@ -30,6 +30,7 @@ public class HelloWorldController {
 		String iSo ="";
 		try{
 			iSo = request.getResult().getResolvedQuery();
+			//JSONObject jsonCaseDetails = apiClient.getCaseDetails(userSoeId);
 		}catch(Exception e){
 		iSo ="Error";	
 		}
