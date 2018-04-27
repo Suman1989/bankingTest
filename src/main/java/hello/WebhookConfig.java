@@ -14,7 +14,7 @@ import org.apache.http.client.HttpClient;
 @Configuration
 public class WebhookConfig {
 	
-	@Value(value = "classpath:certs/00DS0000003Kwz9.jks")
+	@Value(value = "classpath:00DS0000003Kwz9.jks")
 	private Resource serverSSLKeyStore;
 	
 	@Bean
