@@ -35,6 +35,22 @@ public class HelloWorldController {
 		iSo ="Error";	
 		}
 		return new WebhookResponse("Hello! Hirak...." + request.getResult().getResolvedQuery(), "Text " + request.getResult().getResolvedQuery());
-	}	
+	}
+	
+	private String buildSpeech(JSONObject jsonCaseDetails){
+		
+		StringBuffer speech = new StringBuffer();		
+		JSONArray caseDetails = jsonCaseDetails.getJSONArray("caseDetails");
+		/*for (int i = 0; i < caseDetails.length(); i++) {
+			JSONObject caseDetail = caseDetails.getJSONObject(i);
+				speech.append("Client Name is " + caseDetail.getString("clientName"))
+						.append(" and  ").append(caseDetail.getString("entityNumber")).append(" .");
+	
+			} */
+		
+		speech.insert(0,"I have found "+caseDetails.length()+" cases assigned to you.");
+		
+		return speech.toString();
+	}
 	
 }
